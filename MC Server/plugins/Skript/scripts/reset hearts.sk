@@ -1,0 +1,3 @@
+on death of player:
+    send "Your hearts have been reset" to victim
+    set victim's max health attribute to 20
