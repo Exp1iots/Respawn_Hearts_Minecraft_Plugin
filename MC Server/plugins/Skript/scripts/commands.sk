@@ -13,9 +13,13 @@ command /set_max_health <player> <integer>:
         set max health of arg-1 to arg-2
         # set max health of arg-1 to {maxHealth::%arg-1%}
         if arg-1's name ends with "s":
-            send "%arg-1% max health has been set to %arg-2%" to player
+            loop 2 times:
+                send action bar "%arg-1%' max health has been set to %arg-2%" to player
+                wait 1 second
         else:
-            send "%arg-1%'s max health has been set to %arg-2%" to player
+            loop 2 times:
+                send action bar "%arg-1%'s max health has been set to %arg-2%" to player
+                wait 1 second
 
 command /set_max_health_after_death <player> <integer>:
     description: "Set a player's max health after death"
@@ -25,9 +29,13 @@ command /set_max_health_after_death <player> <integer>:
         set {maxHealthAfterDeath::%arg-1%} to arg-2
         set max health of arg-1 to {maxHealthAfterDeath::%arg-1%}
         if arg-1's name ends with "s":
-            send "%arg-1% max health after death has been set to %arg-2%" to player
+            loop 2 times:
+                send action bar "%arg-1%' max health after death has been set to %arg-2%" to player
+                wait 1 second
         else:
-            send "%arg-1%'s max health after death has been set to %arg-2%" to player
+            loop 2 times:
+                send action bar "%arg-1%'s max health after death has been set to %arg-2%" to player
+                wait 1 second
 
 command /health_stats:
     description: "Show a player their health stats"
