@@ -4,5 +4,6 @@ on load:
 on rightclick:
     if player's tool is knowledge book with custom model data "extra_heart":
         add 1 to {maxHealthAfterDeath::%player%}
-        set max health of player to {maxHealthAfterDeath::%player%}
-        send "You're max health after death value has been increased to %{maxHealthAfterDeath::%player%}%" to player
+        if max health of player is less than {maxHealthAfterDeath::%player%}:
+            set max health of player to {maxHealthAfterDeath::%player%}
+        send action bar "You're max health after death value has been increased to %{maxHealthAfterDeath::%player%}%" to player
