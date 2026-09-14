@@ -1,11 +1,8 @@
 on load:
     set {item::extra_heart} to knowledge book named "Extra Heart" with lore "%nl%Use this extra heart to increase your reset health value." with custom model data "extra_heart"
 
-command /extra_heart:
-    permission: op
-    trigger:
-        give {item::extra_heart} to player
-
 on rightclick:
     if player's tool is knowledge book with custom model data "extra_heart":
-        increase player's max health attribute by 2
+        increase player's max health attribute by 2     
+        add 2 to {maxHealth::%player%}
+        send "You're health reset value has been increased to %10 + {maxHealth::%player%}%" to player

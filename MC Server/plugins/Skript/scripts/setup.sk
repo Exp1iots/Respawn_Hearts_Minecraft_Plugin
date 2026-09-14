@@ -1,0 +1,2 @@
+on first join:
+    set {maxHealth::%player%} to 10
