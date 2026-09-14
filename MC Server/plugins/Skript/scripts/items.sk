@@ -4,7 +4,7 @@ on load:
 on rightclick:
     if player's tool is knowledge book with custom model data "respawn_heart":
         if {maxRespawnHearts::%player%} is greater than or equal to 15:
-            give {item::extra_heart} to player # needed because knowledge book disapears on use by itself
+            give {item::respawn_heart} to player # needed because knowledge book disapears on use by itself
             loop 3 times:
                 send action bar "Sorry, you've reached the maxium number of respawn hearts" to player
                 wait 1 second
