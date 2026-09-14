@@ -1,0 +1,7 @@
+on load:
+    set {item::extra_heart} to paper named "Extra Heart" with lore "%nl%Use this extra heart to increase your reset health value."
+
+command /hearts give <text>:
+    permission: op
+    trigger:
+        give {item::%arg-1%} to player
