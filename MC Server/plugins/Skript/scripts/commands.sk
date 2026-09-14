@@ -1,12 +1,12 @@
 command /respawn_heart:
-    description: "Give an respawn_heart item to the player"
+    description: Give an Respawn Heart item to the player
     permission: op
     permission message: Hey, you can't do that!
     trigger:
         give {item::respawn_heart} to player
 
 command /set_max_health <player> <integer>:
-    description: "Set a player's max health"
+    description: Set a player's max health
     permission: op
     permission message: Hey, you can't do that!
     trigger:
@@ -26,7 +26,7 @@ command /set_max_health <player> <integer>:
                     wait 1 second
 
 command /set_respawn_hearts <player> <integer>:
-    description: "Set a player's respawn hearts (maxRespawnHearts)"
+    description: Set a player's maxRespawnHearts
     permission: op
     permission message: Hey, you can't do that!
     trigger:
@@ -48,14 +48,14 @@ command /set_respawn_hearts <player> <integer>:
                     wait 1 second
 
 command /health_stats:
-    description: "Show a player their health stats"
+    description: Show a player their health stats
     trigger:
         send "Your Health Stats"
         send "Your max health is %max health of player%/20" to player
         send "You have %{maxRespawnHearts::%player%}% respawn hearts."
 
 command /health_stats_of <player>:
-    description: "Show health stats of another player"
+    description: Show health stats of another player
     permission: op
     permission message: Hey, you can't do that!
     trigger:
