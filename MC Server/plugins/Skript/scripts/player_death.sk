@@ -1,6 +1,8 @@
 on death of player:
-    increase attacker's max health attribute by 2
+    # increase attacker's max health attribute by 2
+    increase max health of attacker by 1
     send "You recieved 1 heart" to attacker
 
-    set victim's max health attribute to 10 + {maxHealth::%victim%}
+    # set victim's max health attribute to 10 + {maxHealth::%victim%}
+    set max health of victim to 10 + {maxHealth::%victim%}
     send "Your hearts have been reset" to victim

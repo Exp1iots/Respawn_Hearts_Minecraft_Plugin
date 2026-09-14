@@ -6,11 +6,26 @@ command /extra_heart:
         give {item::extra_heart} to player
 
 command /reset_hearts <player>:
-    description: "Reset a player's max health"
+    description: "Reset a player's health"
     permission: op
     permission message: "Hey, you can't do that!"
     trigger:
         set the max health of player to 10
+        if arg-1's name ends with "s":
+            send "%arg-1% hearts have been reset to 10" to player
+        else:
+            send "%arg-1%'s hearts have been reset to 10" to player
+
+command /reset_max_health <player> <integer>:
+    description: "Reset a player's max health"
+    permission: op
+    permission message: "Hey, you can't do that!"
+    trigger:
+        set {maxHealth::%arg-1%} to arg-2
+        if arg-1's name ends with "s":
+            send "%arg-1% max health has been reset to %arg-2%" to player
+        else:
+            send "%arg-1%'s max health has been reset to %arg-2%" to player
 
 command /set_health <player> <integer>:
     description: "Set a player's max health"
@@ -18,3 +33,7 @@ command /set_health <player> <integer>:
     permission message: "Hey, you can't do that!"
     trigger:
         set the max health of arg-1 to arg-2
+        if arg-1's name ends with "s":
+            send "%arg-1% health has been set to %arg-2%" to player
+        else:
+            send "%arg-1%'s health has been set to %arg-2%" to player

@@ -3,6 +3,7 @@ on load:
 
 on rightclick:
     if player's tool is knowledge book with custom model data "extra_heart":
-        increase player's max health attribute by 2     
+        # increase player's max health attribute by 2
+        increase max health of player by 1
         add 2 to {maxHealth::%player%}
         send "You're health reset value has been increased to %{maxHealth::%player%}%" to player
