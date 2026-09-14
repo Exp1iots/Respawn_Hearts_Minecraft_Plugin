@@ -1,2 +1,2 @@
 on first join:
-    set {maxHealthAfterDeath::%player%} to 10
+    set {maxRespawnHearts::%player%} to 10

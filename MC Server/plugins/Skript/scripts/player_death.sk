@@ -1,10 +1,11 @@
 on death of player:
-    increase max health of attacker by 1
-    loop 2 times:
-        send action bar "You recieved 1 heart" to attacker
-        wait 1 second
+    if max health of attacker is less than 15:
+        increase max health of attacker by 1
+        loop 2 times:
+            send action bar "You recieved 1 heart" to attacker
+            wait 1 second
 
-    set max health of victim to {maxHealthAfterDeath::%victim%}
+    set max health of victim to {maxRespawnHearts::%victim%}
     set {-seeActionBar::%victim%} to true
 
 on respawn:

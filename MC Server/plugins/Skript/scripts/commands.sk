@@ -1,60 +1,69 @@
-command /extra_heart:
-    description: "Give an extra_heart item to the player"
+command /respawn_heart:
+    description: "Give an respawn_heart item to the player"
     permission: op
-    permission message: "Hey, you can't do that!"
+    permission message: Hey, you can't do that!
     trigger:
-        give {item::extra_heart} to player
+        give {item::respawn_heart} to player
 
 command /set_max_health <player> <integer>:
     description: "Set a player's max health"
     permission: op
-    permission message: "Hey, you can't do that!"
+    permission message: Hey, you can't do that!
     trigger:
-        set max health of arg-1 to arg-2
-        # set max health of arg-1 to {maxHealth::%arg-1%}
-        if arg-1's name ends with "s":
-            loop 2 times:
-                send action bar "%arg-1%' max health has been set to %arg-2%" to player
+        if arg-2 is greater than 20:
+            loop 3 times:
+                send action bar "Sorry, %arg-1% has reached the maxium number of hearts" to player
                 wait 1 second
         else:
-            loop 2 times:
-                send action bar "%arg-1%'s max health has been set to %arg-2%" to player
-                wait 1 second
+            set max health of arg-1 to arg-2
+            if arg-1's name ends with "s":
+                loop 2 times:
+                    send action bar "%arg-1%' max health has been set to %arg-2%" to player
+                    wait 1 second
+            else:
+                loop 2 times:
+                    send action bar "%arg-1%'s max health has been set to %arg-2%" to player
+                    wait 1 second
 
-command /set_max_health_after_death <player> <integer>:
-    description: "Set a player's max health after death"
+command /set_respawn_hearts <player> <integer>:
+    description: "Set a player's respawn hearts (maxRespawnHearts)"
     permission: op
-    permission message: "Hey, you can't do that!"
+    permission message: Hey, you can't do that!
     trigger:
-        set {maxHealthAfterDeath::%arg-1%} to arg-2
-        if max health of arg-1 is less than {maxHealthAfterDeath::%arg-1%}:
-            set max health of arg-1 to {maxHealthAfterDeath::%arg-1%}
-        if arg-1's name ends with "s":
-            loop 2 times:
-                send action bar "%arg-1%' max health after death has been set to %arg-2%" to player
+        if arg-2 is greater than 15:
+            loop 3 times:
+                send action bar "Sorry, %arg-1% has reached the maxium number of respawn hearts" to player
                 wait 1 second
         else:
-            loop 2 times:
-                send action bar "%arg-1%'s max health after death has been set to %arg-2%" to player
-                wait 1 second
+            set {maxRespawnHearts::%arg-1%} to arg-2
+            if max health of arg-1 is less than {maxRespawnHearts::%arg-1%}:
+                set max health of arg-1 to {maxRespawnHearts::%arg-1%}
+            if arg-1's name ends with "s":
+                loop 2 times:
+                    send action bar "%arg-1%' respawn hearts has been set to %arg-2%" to player
+                    wait 1 second
+            else:
+                loop 2 times:
+                    send action bar "%arg-1%'s respawn hearts has been set to %arg-2%" to player
+                    wait 1 second
 
 command /health_stats:
     description: "Show a player their health stats"
     trigger:
         send "Your Health Stats"
-        send "Your max health is %max health of player%" to player
-        send "When you die you will have %{maxHealthAfterDeath::%player%}% hearts."
+        send "Your max health is %max health of player%/20" to player
+        send "You have %{maxRespawnHearts::%player%}% respawn hearts."
 
 command /health_stats_of <player>:
     description: "Show health stats of another player"
     permission: op
-    permission message: "Hey, you can't do that!"
+    permission message: Hey, you can't do that!
     trigger:
         if arg-1's name ends with "s":
             send "%arg-1%' Health Stats"
-            send "%arg-1%' max health is %max health of player%" to player
-            send "When %arg-1% dies they will have %{maxHealthAfterDeath::%player%}% hearts."
+            send "%arg-1%' max health is %max health of arg-1%/20" to player
+            send "%arg-1% has %{maxRespawnHearts::%arg-1%}% respawn hearts."
         else:
             send "%arg-1%'s Health Stats"
-            send "%arg-1%'s max health is %max health of player%" to player
-            send "When %arg-1% dies they will have %{maxHealthAfterDeath::%player%}% hearts."
+            send "%arg-1%'s max health is %max health of arg-1%/20" to player
+            send "%arg-1% has %{maxRespawnHearts::%arg-1%}% respawn hearts."
