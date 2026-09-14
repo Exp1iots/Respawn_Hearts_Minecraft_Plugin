@@ -6,5 +6,6 @@ command /extra_heart:
     trigger:
         give {item::extra_heart} to player
 
-on rightclick holding a {item::extra_heart}:
-    increase player's max health attribute by 2
+on rightclick:
+    if player's tool is knowledge book with custom model data "extra_heart":
+        increase player's max health attribute by 2
