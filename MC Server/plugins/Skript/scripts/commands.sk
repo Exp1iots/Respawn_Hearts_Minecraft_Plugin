@@ -27,7 +27,8 @@ command /set_max_health_after_death <player> <integer>:
     permission message: "Hey, you can't do that!"
     trigger:
         set {maxHealthAfterDeath::%arg-1%} to arg-2
-        set max health of arg-1 to {maxHealthAfterDeath::%arg-1%}
+        if max health of arg-1 is less than {maxHealthAfterDeath::%arg-1%}:
+            set max health of arg-1 to {maxHealthAfterDeath::%arg-1%}
         if arg-1's name ends with "s":
             loop 2 times:
                 send action bar "%arg-1%' max health after death has been set to %arg-2%" to player
@@ -43,3 +44,17 @@ command /health_stats:
         send "Your Health Stats"
         send "Your max health is %max health of player%" to player
         send "When you die you will have %{maxHealthAfterDeath::%player%}% hearts."
+
+command /health_stats_of <player>:
+    description: "Show health stats of another player"
+    permission: op
+    permission message: "Hey, you can't do that!"
+    trigger:
+        if arg-1's name ends with "s":
+            send "%arg-1%' Health Stats"
+            send "%arg-1%' max health is %max health of player%" to player
+            send "When %arg-1% dies they will have %{maxHealthAfterDeath::%player%}% hearts."
+        else:
+            send "%arg-1%'s Health Stats"
+            send "%arg-1%'s max health is %max health of player%" to player
+            send "When %arg-1% dies they will have %{maxHealthAfterDeath::%player%}% hearts."
