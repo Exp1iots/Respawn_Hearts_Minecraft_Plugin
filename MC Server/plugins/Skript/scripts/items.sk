@@ -3,16 +3,16 @@ on load:
 
 on rightclick:
     if player's tool is knowledge book with custom model data "respawn_heart":
-        if {maxRespawnHearts::%player%} is greater than or equal to 15:
-            give {item::respawn_heart} to player # needed because knowledge book disapears on use by itself
+        if {RespawnHearts::%player%} is greater than or equal to {maxRespawnHearts}:
+            give {item::respawn_heart} to player # needed because knowledge book disapears on use by itself when in survival
             loop 3 times:
                 send action bar "Sorry, you've reached the maxium number of respawn hearts" to player
                 wait 1 second
         else:
-            add 1 to {maxRespawnHearts::%player%}
+            add 1 to {RespawnHearts::%player%}
             play sound "block.note_block.chime" with volume 0.5 and pitch 0.9 to player
-            if max health of player is less than {maxRespawnHearts::%player%}:
-                set max health of player to {maxRespawnHearts::%player%}
+            if max health of player is less than {RespawnHearts::%player%}:
+                set max health of player to {RespawnHearts::%player%}
             loop 4 times:
-                send action bar "You're respawn hearts has been increased to %{maxRespawnHearts::%player%}%" to player
+                send action bar "You're respawn hearts has been increased to %{RespawnHearts::%player%}%" to player
                 wait 1 second

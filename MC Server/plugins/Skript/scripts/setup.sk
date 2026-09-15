@@ -1,2 +1,12 @@
+# Variable Setup
+variables:
+    {maxRespawnHearts} = 15
+    {defaultRespawnHearts} = 10
+    {maxHearts} = 20
+
 on first join:
-    set {maxRespawnHearts::%player%} to 10
+    set {RespawnHearts::%player%} to {defaultRespawnHeartss}
+
+on join:
+    if {RespawnHearts::%player%} does not exist:
+        set {RespawnHearts::%player%} to {defaultRespawnHearts}
