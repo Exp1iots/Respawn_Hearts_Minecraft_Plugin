@@ -1,0 +1,19 @@
+{
+    "model": {
+        "type": "select",
+        "property": "custom_model_data",
+        "fallback": {
+            "type": "model",
+            "model": "item/knowledge_book"
+        },
+        "cases": [
+            {
+                "when": "respawn_heart",
+                "model": {
+                    "type": "model",
+                    "model": "item/respawn_heart"
+                }
+            }
+        ]
+    }
+}
