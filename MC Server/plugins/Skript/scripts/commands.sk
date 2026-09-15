@@ -67,3 +67,33 @@ command /health_stats_of <player>:
             send "%arg-1%'s Health Stats"
             send "%arg-1%'s max health is %max health of arg-1%/%{maxHearts}%" to player
             send "%arg-1% has %{RespawnHearts::%arg-1%}% respawn hearts."
+
+
+# Debug/info commands
+
+command /current_time:
+    trigger:
+        send "&7[&3INFO&7] &fTime: %time%" to player
+        send "&7[&3INFO&7] &fNow: %now%" to player
+
+command /enable_force_respawn <player>:
+    permission: op
+    permission message: Hey, you can't do that!
+    trigger:
+        force arg-1 to respawn
+
+command /show_cooldown <player> <player>:
+    permission: op
+    permission message: Hey, you can't do that!
+    trigger:
+        send {cooldown.%arg-1%.%arg-2%} to player
+        if {cooldown.%arg-1%.%arg-2%} does not exist:
+            send "&7[&3INFO&7] &f{cooldown.%arg-1%.%arg-2%} does not exist" to player
+
+command /clear_cooldown <player> <player>:
+    trigger:
+        if {cooldown.%arg-1%.%arg-2%} does not exist:
+            send "&7[&3INFO&7] &f{cooldown.%arg-1%.%arg-2%} does not exist so there was nothing to delete" to player
+            exit
+        delete {cooldown.%arg-1%.%arg-2%}
+        send "&7[&3INFO&7] &fCleared cooldown between %arg-1% and %arg-2%" to player

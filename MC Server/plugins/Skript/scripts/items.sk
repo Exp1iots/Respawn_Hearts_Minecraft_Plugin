@@ -4,7 +4,8 @@ on load:
 on rightclick:
     if player's tool is knowledge book with custom model data "respawn_heart":
         if {RespawnHearts::%player%} is greater than or equal to {maxRespawnHearts}:
-            give {item::respawn_heart} to player # needed because knowledge book disapears on use by itself when in survival
+            play sound "block.note_block.bass" with volume 0.5 and pitch 0.3 to player
+            give {item::respawn_heart} to player # needed because knowledge book disapears on use when in survival and adventure mode (default Minecraft behavour)
             loop 3 times:
                 send action bar "Sorry, you've reached the maxium number of respawn hearts" to player
                 wait 1 second

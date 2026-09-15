@@ -3,6 +3,7 @@ variables:
     {maxRespawnHearts} = 15
     {defaultRespawnHearts} = 10
     {maxHearts} = 20
+    {deathCooldownPeriod} = 5 minutes
 
 on first join:
     set {RespawnHearts::%player%} to {defaultRespawnHeartss}
