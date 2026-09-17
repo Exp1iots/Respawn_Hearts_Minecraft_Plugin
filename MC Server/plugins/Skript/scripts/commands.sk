@@ -86,9 +86,10 @@ command /show_cooldown <player> <player>:
     permission: op
     permission message: Hey, you can't do that!
     trigger:
-        send {cooldown.%arg-1%.%arg-2%} to player
         if {cooldown.%arg-1%.%arg-2%} does not exist:
             send "&7[&3INFO&7] &f{cooldown.%arg-1%.%arg-2%} does not exist" to player
+        else:
+            send "&7[&3INFO&7] &f{cooldown.%arg-1%.%arg-2%}: &9%{cooldown.%arg-1%.%arg-2%}%" to player
 
 command /clear_cooldown <player> <player>:
     trigger:
