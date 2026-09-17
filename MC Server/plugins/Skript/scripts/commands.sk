@@ -98,3 +98,7 @@ command /clear_cooldown <player> <player>:
             exit
         delete {cooldown.%arg-1%.%arg-2%}
         send "&7[&3INFO&7] &fCleared cooldown between %arg-1% and %arg-2%" to player
+
+command /show_deathCooldownPeriod:
+    trigger:
+        send {deathCooldownPeriod} to player

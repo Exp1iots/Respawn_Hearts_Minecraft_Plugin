@@ -1,28 +1,32 @@
+function grantHeartLogicFlow(attacker: player, victim: player):
+    if max health of {_attacker} is less than {maxHearts}:
+        increase max health of {_attacker} by 1
+        loop 2 times:
+            send action bar "You recieved 1 heart" to {_attacker}
+            wait 1 second
+    else:
+        loop 3 times:
+            send action bar "Sorry, you have reached the maxium number of hearts" to {_attacker}
+            wait 1 second
+
 on death of player:
     if {cooldown.%attacker%.%victim%} does not exist:
         set {cooldown.%attacker%.%victim%} to now
         send "&7[&cDEBUG&7] &fCreated variable and set to &9%{cooldown.%attacker%.%victim%}%" to attacker
+        grantHeartLogicFlow(attacker, victim)
     else:
         send "&7[&cDEBUG&7] &fCooldown variable exists and is set to &9%{cooldown.%attacker%.%victim%}%" to attacker
-        if difference between {cooldown.%attacker%.%victim%} and now is less than or equal to 5 minutes:
+        if difference between {cooldown.%attacker%.%victim%} and now is less than or equal to {deathCooldownPeriod}:
             loop 5 times:
                 set {_timeFromCooldownStart} to difference between {cooldown.%attacker%.%victim%} and now
-                set {_timeUntilCooldownEnds} to (5 minutes - {_timeFromCooldownStart})
+                set {_timeUntilCooldownEnds} to ({deathCooldownPeriod} - {_timeFromCooldownStart})
                 send action bar "Please wait %{_timeUntilCooldownEnds}% until killing %victim% again to receive a Respawn Heart" to attacker
                 wait 1 second
             send action bar " " to attacker # Clear the action bar to prevent it from showing a stale time
-            exit
         else:
-            if max health of attacker is less than {maxHearts}:
-                increase max health of attacker by 1
-                delete {cooldown.%attacker%.%victim%}
-                loop 2 times:
-                    send action bar "You recieved 1 heart" to attacker
-                    wait 1 second
-            else:
-                loop 3 times:
-                    send action bar "Sorry, you have reached the maxium number of hearts" to attacker
-                    wait 1 second
+            delete {cooldown.%attacker%.%victim%}
+            grantHeartLogicFlow(attacker, victim)
+
 
     set max health of victim to {RespawnHearts::%victim%}
     set {-seeActionBar::%victim%} to true

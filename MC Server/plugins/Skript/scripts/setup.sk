@@ -1,12 +1,12 @@
 # Variable Setup
-variables:
-    {maxRespawnHearts} = 15
-    {defaultRespawnHearts} = 10
-    {maxHearts} = 20
-    {deathCooldownPeriod} = 5 minutes
+on load:
+    set {maxRespawnHearts} to 15
+    set {defaultRespawnHearts} to 10
+    set {maxHearts} to 20
+    set {deathCooldownPeriod} to 5 minutes
 
 on first join:
-    set {RespawnHearts::%player%} to {defaultRespawnHeartss}
+    set {RespawnHearts::%player%} to {defaultRespawnHearts}
 
 on join:
     if {RespawnHearts::%player%} does not exist:
