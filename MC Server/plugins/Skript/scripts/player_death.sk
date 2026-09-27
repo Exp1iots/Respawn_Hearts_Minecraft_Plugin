@@ -1,4 +1,4 @@
-function grantHeartLogicFlow(attacker: player, victim: player):
+function grantHeartLogic(attacker: player, victim: player):
     if max health of {_attacker} is less than {maxHearts}:
         increase max health of {_attacker} by 1
         loop 2 times:
@@ -13,19 +13,26 @@ on death of player:
     if {cooldown.%attacker%.%victim%} does not exist:
         set {cooldown.%attacker%.%victim%} to now
         send "&7[&cDEBUG&7] &fCreated variable and set to &9%{cooldown.%attacker%.%victim%}%" to attacker
-        grantHeartLogicFlow(attacker, victim)
+        grantHeartLogic(attacker, victim)
+        send "&7[&cDEBUG&7] &fYou received one heart because the cooldown variable between &9%attacker% &fand &9%victim% &fdid not exist" to attacker
     else:
         send "&7[&cDEBUG&7] &fCooldown variable exists and is set to &9%{cooldown.%attacker%.%victim%}%" to attacker
         if difference between {cooldown.%attacker%.%victim%} and now is less than or equal to {deathCooldownPeriod}:
             loop 5 times:
                 set {_timeFromCooldownStart} to difference between {cooldown.%attacker%.%victim%} and now
                 set {_timeUntilCooldownEnds} to ({deathCooldownPeriod} - {_timeFromCooldownStart})
+                set {_roundedSeconds} to round((ticks of {_timeUntilCooldownEnds}) / 20)
+                set {_timeUntilCooldownEnds} to "%{_roundedSeconds}% seconds" parsed as timespan
+
                 send action bar "Please wait %{_timeUntilCooldownEnds}% until killing %victim% again to receive a Respawn Heart" to attacker
                 wait 1 second
             send action bar " " to attacker # Clear the action bar to prevent it from showing a stale time
         else:
             delete {cooldown.%attacker%.%victim%}
-            grantHeartLogicFlow(attacker, victim)
+            grantHeartLogic(attacker, victim)
+            send "&7[&cDEBUG&7] &fYou received one heart because the cooldown variable between &9%attacker% &fand &9%victim% &fwas greater than %{deathCooldownPeriod}%" to attacker
+            set {cooldown.%attacker%.%victim%} to now
+            send "&7[&cDEBUG&7] &fCreated variable and set to &9%{cooldown.%attacker%.%victim%}%" to attacker
 
 
     set max health of victim to {RespawnHearts::%victim%}

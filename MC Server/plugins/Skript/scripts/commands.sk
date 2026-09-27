@@ -1,5 +1,5 @@
 command /respawn_heart:
-    description: Give an Respawn Heart item to the player
+    description: Give a Respawn Heart item to the player
     permission: op
     permission message: Hey, you can't do that!
     trigger:
