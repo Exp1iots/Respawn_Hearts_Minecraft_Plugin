@@ -65,7 +65,7 @@ Note: the kill code can print debug messages to the killer's chat. Set `showDebu
 
 You need a Paper 1.21.11 server with Java 21 or newer.
 
-1. Install Skript 2.16.2 and SkBee 3.26.0 on your server.
+1. Install [Skript](https://modrinth.com/plugin/skript/versions?g=1.21.11) and [SkBee](https://modrinth.com/plugin/skbee/versions?g=1.21.11) on your server.
 2. Copy the four `.sk` files from `MC Server/plugins/Skript/scripts/` into your server's `plugins/Skript/scripts/` folder (create it if it doesn't exist).
 3. Add the cooldowns database to your `plugins/Skript/config.sk`. See the [Databases](#databases) section.
 4. Restart the server.
@@ -75,6 +75,8 @@ You need a Paper 1.21.11 server with Java 21 or newer.
 Skript saves variables in the databases listed in `plugins/Skript/config.sk`. This plugin uses a dedicated cooldowns database. It stores all `cooldown.*` variables in `cooldowns.csv`, separate from the default `variables.csv`. All other variables, such as `RespawnHearts::*`, go to the default database.
 
 A fresh Skript install has only the default database. Add the block below to the `databases:` list in your `plugins/Skript/config.sk`. Place it above the `default:` database:
+
+Ensure the indentation of this new block matches that of the default database.
 
 ```
 	cooldowns:
@@ -130,7 +132,7 @@ Resource Packs/Respawn Hearts/   Resource pack source and zip.
 ## Credits
 
 Plugin and resource pack by [Exp1iots](https://github.com/Exp1iots).
-Built with [Skript](https://skriptlang.github.io/Skript/) and [SkBee](https://modrinth.com/plugin/skbee).
+Built with [Skript](https://modrinth.com/plugin/skript) <sup>([GitHub page](https://github.com/SkriptLang/))</sup> and [SkBee](https://modrinth.com/plugin/skbee).
 
 ## License
 
