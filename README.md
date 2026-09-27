@@ -66,7 +66,7 @@ Note: the kill code can print debug messages to the killer's chat. Set `showDebu
 You need a Paper 1.21.11 server with Java 21 or newer.
 
 1. Install Skript 2.16.2 and SkBee 3.26.0 on your server.
-2. Copy the four `.sk` files from `MC Server/plugins/Skript/scripts/` into your server's `plugins/Skript/scripts/` folder.
+2. Copy the four `.sk` files from `MC Server/plugins/Skript/scripts/` into your server's `plugins/Skript/scripts/` folder (create it if it doesn't exist).
 3. Add the cooldowns database to your `plugins/Skript/config.sk`. See the [Databases](#databases) section.
 4. Restart the server.
 
