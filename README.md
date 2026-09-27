@@ -131,3 +131,7 @@ Resource Packs/Respawn Hearts/   Resource pack source and zip.
 
 Plugin and resource pack by [Exp1iots](https://github.com/Exp1iots).
 Built with [Skript](https://skriptlang.github.io/Skript/) and [SkBee](https://modrinth.com/plugin/skbee).
+
+## License
+
+Released under the GPL-3.0 license. See [LICENSE](./LICENSE).
