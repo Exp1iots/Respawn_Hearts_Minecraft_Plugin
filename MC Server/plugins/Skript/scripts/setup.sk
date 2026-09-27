@@ -4,6 +4,7 @@ on load:
     set {defaultRespawnHearts} to 10
     set {maxHearts} to 20
     set {deathCooldownPeriod} to 5 minutes
+    set {showDebugMessages} to 0 # (1 equals True, 0 equals False)
 
 on first join:
     set {RespawnHearts::%player%} to {defaultRespawnHearts}
