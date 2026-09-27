@@ -1,0 +1,15 @@
+# Ignore everything in "MC Server/" except "MC Server/plugins/Skript/scripts/"
+MC\ Server/*
+!MC\ Server/plugins/
+MC\ Server/plugins/*
+!MC\ Server/plugins/Skript/
+MC\ Server/plugins/Skript/*
+!MC\ Server/plugins/Skript/scripts/
+
+# Ignore dev files
+start.sh
+notes.md
+
+# Ignore everything in "Resource Packs/" except "Resource Packs/Respawn Hearts/"
+Resource\ Packs/*
+!Resource\ Packs/Respawn\ Hearts/
