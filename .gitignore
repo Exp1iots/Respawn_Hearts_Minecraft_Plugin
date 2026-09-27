@@ -13,3 +13,6 @@ notes.md
 # Ignore everything in "Resource Packs/" except "Resource Packs/Respawn Hearts/"
 Resource\ Packs/*
 !Resource\ Packs/Respawn\ Hearts/
+
+# Ignore Release folder
+Release

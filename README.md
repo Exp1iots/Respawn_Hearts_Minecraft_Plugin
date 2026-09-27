@@ -1,6 +1,6 @@
 # Respawn Hearts
 
-A lifesteal plugin for Minecraft, written in [Skript](https://skriptlang.github.io/Skript/).
+A lifesteal style plugin for Minecraft, written in [Skript](https://skriptlang.github.io/Skript/).
 Kill players to grow your hearts. Die, and your hearts reset to your respawn heart count.
 
 Built and tested on Paper 1.21.11 with Skript 2.16.2 and SkBee 3.26.0.
